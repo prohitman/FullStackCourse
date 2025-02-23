@@ -22,12 +22,15 @@ const App = () => {
 
 
   const addPerson = (event) => {
+    console.log("Adding person...")
     event.preventDefault()
     if(!persons.some((person) => person.name === newName)){
       const personObject = {
         name: newName,
         number: newNumber
       }
+      console.log("Adding non-duplicate person...", newName)
+
       personServices.create(personObject)
         .then( returnedPerson => {
           setPersons(persons.concat(returnedPerson))
@@ -41,6 +44,17 @@ const App = () => {
           setTimeout(() => {
             setMessage(null)
           }, 5000)
+      }).catch(error => {
+        console.log("Caught error")
+        const messageObject = {
+          text: error.response.data.error,
+          type: 'error'
+        }
+        setMessage(messageObject)
+        setTimeout(() => {
+          setMessage(null)
+        }, 5000)
+        console.log(messageObject.text)
       })
       
       
@@ -65,14 +79,23 @@ const App = () => {
             }
           )
           .catch(error => {
-            const messageObject = {
+            /* const messageObject = {
               text: `Information of '${updatedPerson.name}' has already been removed from the phonebook`,
               type: 'error'
             }
             setMessage(messageObject)
             setTimeout(() => {
               setMessage(null)
+            }, 5000)*/
+            const messageObject = {
+              text: error.response.data.error,
+              type: 'error'
+            }
+            setMessage(messageObject)
+            setTimeout(() => {
+              setMessage(null)
             }, 5000)
+            console.log(error.response.data.error)
           })
       }
     } else {
