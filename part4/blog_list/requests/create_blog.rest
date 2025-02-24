@@ -1,0 +1,10 @@
+POST http://localhost:3001/api/blogs
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxhcyIsImlkIjoiNjdiYzhlOTg5ODAyMTRiYTU3Y2I4NDA3IiwiaWF0IjoxNzQwNDI1MDY0fQ.T3qDxm1BcBOw4QQ4mD_-zADbPx4D6XfjT093mRLY9GY
+
+{
+  "title": "Wake up, the code works",
+  "author": "Chad Coder",
+  "url": "http://www.cs.utexas.edu/~EWD/transcriptions/EWD08xx/EWD808.html",
+  "likes": 1000
+}
