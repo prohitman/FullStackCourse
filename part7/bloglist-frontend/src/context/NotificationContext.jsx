@@ -4,9 +4,12 @@ const NotificationContext = createContext()
 
 const notificationReducer = (state, action) => {
   switch (action.type) {
-    case 'SET': return action.payload
-    case 'CLEAR': return ''
-    default: return state
+    case 'SET':
+      return action.payload
+    case 'CLEAR':
+      return ''
+    default:
+      return state
   }
 }
 
@@ -20,14 +23,20 @@ export const NotificationProvider = ({ children }) => {
   )
 }
 
+export const useNotification = () => {
+  const context = useContext(NotificationContext)
+  if (!context) {
+    throw new Error('useNotification must be used within NotificationProvider')
+  }
+  return context
+}
+
 export const useNotificationValue = () => {
   const notificationAndDispatch = useContext(NotificationContext)
   return notificationAndDispatch[0]
 }
-  
+
 export const useNotificationDispatch = () => {
   const notificationAndDispatch = useContext(NotificationContext)
   return notificationAndDispatch[1]
 }
-
-export const useNotification = () => useContext(NotificationContext)

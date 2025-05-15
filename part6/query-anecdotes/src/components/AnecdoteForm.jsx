@@ -11,7 +11,7 @@ const AnecdoteForm = () => {
     onSuccess: (newAnecdote) => {
       //queryClient.invalidateQueries({ queryKey: ['anecdotes'] })
       const anecdotes = queryClient.getQueryData(['anecdotes'])
-      queryClient.setQueryData(['notes'], anecdotes.concat(newAnecdote))
+      queryClient.setQueryData(['anecdotes'], anecdotes.concat(newAnecdote))
 
       dispatch({ type: 'SET', payload: `new anecdote created: '${newAnecdote.content}'` })
       console.log('dispatch in AnecdoteForm:', dispatch)

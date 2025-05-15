@@ -1,0 +1,46 @@
+{
+  "notes": [
+    {
+      "id": 1,
+      "content": "custom-hooks are awesome!"
+    },
+    {
+      "id": 2,
+      "content": "best feature ever <3"
+    },
+    {
+      "content": "afasdfa",
+      "id": 3
+    },
+    {
+      "content": "EFDSFS",
+      "id": 4
+    },
+    {
+      "content": "sdfsdg",
+      "id": 5
+    }
+  ],
+  "persons": [
+    {
+      "id": 1,
+      "name": "mluukkai",
+      "number": "040-5483923"
+    },
+    {
+      "id": 2,
+      "name": "hellas",
+      "number": "012-123123"
+    },
+    {
+      "name": "ASF",
+      "number": "23434",
+      "id": 3
+    },
+    {
+      "name": "asfa",
+      "number": "asf",
+      "id": 4
+    }
+  ]
+}

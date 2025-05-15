@@ -22,7 +22,8 @@ blogsRouter.post('/', async (request, response) => {
     author: body.author,
     url: body.url,
     likes: likes,
-    user: user.id
+    user: user.id,
+    comments: []
   })
 
   const savedBlog = await blog.save()
@@ -69,6 +70,23 @@ blogsRouter.delete('/:id', async (request, response) => {
 
   await Blog.findByIdAndDelete(request.params.id)
   response.status(204).end()
+})
+
+blogsRouter.post('/:id/comments', async (request, response) => {
+  const { comment } = request.body
+  if (!comment || comment.trim() === '') {
+    return response.status(400).json({ error: 'Comment cannot be empty' })
+  }
+
+  const blog = await Blog.findById(request.params.id)
+  if (!blog) {
+    return response.status(404).json({ error: 'Blog not found' })
+  }
+
+  blog.comments = blog.comments.concat(comment)
+  const updatedBlog = await blog.save()
+
+  response.status(201).json(updatedBlog)
 })
 
 
